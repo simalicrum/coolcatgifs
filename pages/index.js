@@ -1,17 +1,30 @@
 import Head from 'next/head'
 import { fetchAPI } from '../lib/api'
-import Image from 'next/image'
+import React, { useState } from 'react';
 
 export async function getServerSideProps() {
-  const catGifURL = await fetchAPI();
+  const initialState = await fetchAPI();
   return {
     props: {
-      catGifURL
+      initialState
     }
   }
 }
 
-export default function Home({catGifURL}) {
+
+
+export default function Home({initialState}) {
+  const [catGifURL, setCatGifURL] = useState(initialState);
+  const handleClick = async (e) => {
+    console.log("Click worked");
+    const res = await fetch('/api/refresh');
+    const json = await res.json();
+    if(json.errors) {
+      console.error(json.errors)
+      throw new Error('Failed to fetch API');
+    }
+    setCatGifURL(json);
+  }
   return (
     <div className="h-screen w-screen">
       <Head>
@@ -19,8 +32,8 @@ export default function Home({catGifURL}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="h-screen flex flex-col items-center justify-center">
-        <div className="rounded-lg shadow-xl overflow-hidden" >
-        <img className="" src={catGifURL.images.original.url}></img>
+        <div onClick={handleClick} className="rounded-lg shadow-xl overflow-hidden cursor-pointer" >
+          <img className="" src={catGifURL.images.original.url}></img>
         </div>
       </div>
       <footer className="fixed w-screen bottom-0 flex justify-between">
