@@ -18,7 +18,7 @@ export default function Home({catGifURL}) {
         <title>coolcatgifs.com</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="h-screen flex flex-col items-center justify-center m-4">
+      <div className="h-screen flex flex-col items-center justify-center">
         <div className="rounded-lg shadow-xl overflow-hidden" >
         <img className="" src={catGifURL.images.original.url}></img>
         </div>
