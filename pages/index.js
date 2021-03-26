@@ -16,7 +16,6 @@ export async function getServerSideProps() {
 export default function Home({initialState}) {
   const [catGifURL, setCatGifURL] = useState(initialState);
   const handleClick = async (e) => {
-    console.log("Click worked");
     const res = await fetch('/api/refresh');
     const json = await res.json();
     if(json.errors) {
