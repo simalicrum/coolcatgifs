@@ -1,6 +1,8 @@
 export default function Catgif({ data, isValidating }) {
   return isValidating ? (
-    <span className="text-2xl font-bold text-gray-600">Moar cats...</span>
+    <span className="text-2xl font-bold text-gray-600">
+      Loading moar cats...
+    </span>
   ) : (
     <img
       className="rounded-lg shadow-xl overflow-hidden cursor-pointer"
