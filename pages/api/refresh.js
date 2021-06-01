@@ -4,5 +4,4 @@ export default async (req, res) => {
   );
   const json = await resp.json();
   res.json(json.data);
-  console.log('Fetch happened');
 };
