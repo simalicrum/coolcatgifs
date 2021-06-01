@@ -1,10 +1,10 @@
 import useSWR from 'swr';
-import fetch from '../lib/fetch';
+import fetcher from '../lib/fetcher';
 
 import Catgif from './Catgif';
 
 export default function Catbox() {
-  const { data, mutate, isValidating } = useSWR('/api/refresh', fetch);
+  const { data, mutate, isValidating } = useSWR('/api/refresh', fetcher);
   return (
     <div
       role="img"

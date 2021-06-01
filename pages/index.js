@@ -1,6 +1,6 @@
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
-import Catbox from '../Components/Catbox';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import Catbox from '../components/Catbox';
 
 export default function Index() {
   return (
